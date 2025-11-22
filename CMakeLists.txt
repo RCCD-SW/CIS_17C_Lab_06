@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(GTest REQUIRED)
 
-add_executable(trees_test google_test/trees_test.cpp)
-target_link_libraries(trees_test GTest::gtest GTest::gtest_main)
+add_executable(search_hash_test google_test/test_search_hash.cpp search_hash.cpp)
+target_link_libraries(search_hash_test GTest::gtest GTest::gtest_main)
 
 # For the main program
-add_executable(trees trees.cpp)
+add_executable(search_hash main.cpp search_hash.cpp)

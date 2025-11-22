@@ -1,139 +1,58 @@
-# Lab 06 - Binary Search Trees
+# Lab 06: Searching and Hashing
 
-This lab implements a binary search tree (BST) data structure, introducing tree-based data organization and recursive algorithms.
+This lab focuses on implementing and testing searching and hashing algorithms in C++.
 
-## Files in this Directory
-- `google_test/`: Directory containing Google Test files
-- Implementation files: `*.cpp` with TODO comments for student completion
-- Documentation: `*.md` files with requirements, diagrams, and presentations
-- `trees.cpp`: BinaryTree class template with recursive helpers
-- `trees_test.cpp`: Test suite with 5 comprehensive test cases
-- `design_diagrams.md`: Tree structure visualizations
-- `presentation.md`: BST concepts and operations
-- `requirements_document.md`: Detailed specifications
+## Overview
 
-## Learning Objectives
-- Understand tree data structures
-- Implement recursive algorithms
-- Maintain BST invariant
-- Analyze tree operation complexities
-- Handle dynamic tree modifications
+The lab provides implementations for:
+- **Linear Search**: Searches through an array sequentially to find a target value.
+- **Binary Search**: Searches through a sorted array using the divide-and-conquer approach.
+- **Hashing**: Uses `std::unordered_map` for efficient key-value storage and retrieval.
 
-## Binary Search Tree Properties
-- Left subtree < root < right subtree
-- Efficient search, insert, delete operations
-- Average O(log n) time complexity
-- Recursive implementation
+## Files
 
-## Implementation Instructions
+- `search_hash.h`: Header file with function declarations.
+- `search_hash.cpp`: Implementation of the search and hash functions.
+- `test_search_hash.cpp`: Unit tests for the functions (30 test cases total: 10 for linear search, 10 for binary search, 10 for hashing).
+- `CMakeLists.txt`: Build configuration for CMake.
 
-## Testing Your Implementation
+## Building the Project
 
-**Important**: You must build your own test executable in the `google_test/` directory. There are no pre-compiled executables provided - this ensures you learn the compilation process.
-Once you have implemented the TODO methods in the `.cpp` file, follow these steps to test your code:
+1. Ensure you have CMake and Google Test installed.
+2. Create a build directory: `mkdir build && cd build`
+3. Run CMake: `cmake ..`
+4. Build: `make`
 
-### Step 1: Navigate to the google_test directory
-```bash
-cd google_test
-```
+## Running the Tests
 
-### Step 2: Compile the test executable
-```bash
-g++ *_test.cpp -std=c++17 -I/opt/homebrew/include -L/opt/homebrew/lib -lgtest -lgtest_main -lpthread -o test_executable
-```
+After building, run the test executable: `./search_hash_test`
 
-### Step 3: Run the tests
-```bash
-./test_executable
-```
+This will execute all 30 test cases and report the results.
 
-### Expected Output
-You should see output like:
-```
-[==========] Running X tests from Y test suite.
-...
-[  PASSED  ] X tests.
-```
+## Functions
 
-If all tests pass, your implementation is correct! If tests fail, check your code against the TODO requirements and test expectations.
+### Linear Search
+- `int linearSearch(const std::vector<int>& arr, int target)`
+- Returns the index of the target if found, -1 otherwise.
 
-### Troubleshooting
-- **Compilation errors**: Ensure all TODO methods are implemented with correct signatures.
-- **Test failures**: Review the failing test messages and debug your implementation.
-- **Missing dependencies**: Make sure Google Test is installed as described in the prerequisites.
+### Binary Search
+- `int binarySearch(const std::vector<int>& arr, int target)`
+- Assumes the array is sorted in ascending order.
+- Returns the index of the target if found, -1 otherwise.
 
-Implement the BinaryTree class and helper functions:
-- TreeNode structure with constructor
-- Recursive insertHelper and searchHelper
-- Proper memory cleanup in destructor
-- Maintain BST ordering
+### Hashing
+- `void hashInsert(std::unordered_map<int, int>& map, int key, int value)`
+- Inserts a key-value pair into the map.
+- `int hashSearch(const std::unordered_map<int, int>& map, int key)`
+- Returns the value associated with the key if found, -1 otherwise.
 
-## Testing Instructions
-1. Install Google Test (see lab_01)
-2. Compile: `g++ google_test/trees_test.cpp -std=c++17 -I/opt/homebrew/include -L/opt/homebrew/lib -lgtest -lgtest_main -lpthread -o trees_test`
-3. Run: `./trees_test`
-4. Verify 5/5 tests pass
+## Test Cases
 
-## Test Cases Explained
-1. **Insert**: Basic node insertion
-2. **Search**: Value location verification
-3. **IsEmpty**: Empty tree detection
-4. **InsertDuplicates**: Handling duplicate values
-5. **SearchEmptyTree**: Empty tree search
+The test suite includes 30 comprehensive test cases covering various scenarios:
+- Edge cases (empty arrays, single elements)
+- Found/not found cases
+- Large datasets
+- Negative numbers
+- Duplicates (for linear search)
 
-## Tree Operations
-- **Insert**: Place value in correct position
-- **Search**: Find value using BST property
-- **Traversal**: Inorder, preorder, postorder (future labs)
-
-## Complexity Analysis
-- Insert: O(log n) average, O(n) worst
-- Search: O(log n) average, O(n) worst
-- Space: O(n) for n nodes
-
-## Common Issues
-- Violating BST property
-- Memory leaks in destruction
-- Incorrect recursive base cases
-- Unbalanced tree handling
-
-## Applications
-- Sorted data storage
-- Database indexing
-- Symbol tables
-- Priority queues
-
-## Extensions
-- Add delete operation
-- Implement tree balancing (AVL)
-- Add tree traversals
-- Calculate tree height/depth
-
-Trees form the foundation for advanced data structures!
-## Testing Your Implementation
-
-**Important**: You must build your own test executable in the `google_test/` directory. There are no pre-compiled executables provided - this ensures you learn the compilation process.
-Once you have implemented the TODO methods, follow these steps to test your code:
-
-### Step 1: Navigate to the google_test directory
-```bash
-cd google_test
-```
-
-### Step 2: Compile the test executable
-```bash
-g++ *_test.cpp -std=c++17 -I/opt/homebrew/include -L/opt/homebrew/lib -lgtest -lgtest_main -lpthread -o test_executable
-```
-
-### Step 3: Run the tests
-```bash
-./test_executable
-```
-
-### Expected Output
-You should see tests passing if your implementation is correct.
-
-### Troubleshooting
-- **Compilation errors**: Ensure all TODO methods are implemented.
-- **Test failures**: Debug based on error messages.
-- **Dependencies**: Verify Google Test installation.
+Students are encouraged to review the test cases to understand different use cases and to modify or add their own tests.
